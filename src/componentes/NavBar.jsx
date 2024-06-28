@@ -15,6 +15,7 @@ function NavBar() {
 
     return (
         <>
+            <header>
             <nav style={fondoNaranja} id="linksToPages" className="navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid">
                     <div className="navbar-nav">
@@ -37,6 +38,7 @@ function NavBar() {
                     </div>
                 </div>
             </nav>
+            </header>
         </>
     );
 }

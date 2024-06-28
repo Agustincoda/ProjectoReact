@@ -7,6 +7,9 @@ function App() {
         <>
             <NavBar />
             <Bienvenida texto="Welcome to the ultimate Dragon ball Store!"  imagen="../public/images/gokuSHFiguart.jpg"/>
+            <footer>
+                <h1>En desarrollo</h1>
+            </footer>
         </>
     );
 }
