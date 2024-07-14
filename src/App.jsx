@@ -1,12 +1,16 @@
 import './App.css';
 import NavBar from './componentes/NavBar';
-import Bienvenida from './componentes/Welcome'
+import Bienvenida from './componentes/Welcome';
+import MostrarProductosHeroes from './componentes/ProductosHeroes';
+import MostrarProductosVillanos from './componentes/ProductosVillanos';
 
 function App() {
     return (
         <>
             <NavBar />
-            <Bienvenida texto="Welcome to the ultimate Dragon ball Store!"  imagen="Images/gokuSHFiguart.jpg"/>
+            <Bienvenida texto="Welcome to the ultimate Dragon ball Store!" />
+            <MostrarProductosHeroes />
+            <MostrarProductosVillanos/>
             <footer>
                 <h1>En desarrollo</h1>
             </footer>

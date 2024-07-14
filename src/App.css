@@ -2,14 +2,15 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #F0F3BD;
-}
+}   
 
 #root {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
+    background-color: #F0F3BD;
+
 }
 
 nav{
@@ -53,4 +54,8 @@ footer{
     margin-top: 15px;
     text-align: center;
     background-color: #FF934F;
+}
+
+.custom-card {
+    border: 2px solid black;
 }
