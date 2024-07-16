@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Son Goku",
+        "description": "Goku, el legendario luchador de la tierra. Vive para entrenar y encontrar un nuevo nivel de poder",
+        "precio": 10000,
+        "imagen": "/Images/GokuSHFiguart.jpg",
+        "stock": 10,
+        "categoria":"heroes"
+    },
+    {
+        "id": 2,
+        "name": "SSJ2 Gohan",
+        "description": "Con su furia desatada Gohan liberó todo su potencial y alcanzó una forma que ni Goku pudo llegar",
+        "precio": 15000,
+        "imagen": "/Images/SSJ2GohanSHFiguart.jpg",
+        "stock": 4,
+        "categoria":"heroes"
+    },
+    {
+        "id": 3,
+        "name": "Orange Piccolo",
+        "description": "Gracias a la ayuda de Shenlong Piccolo ascendió a otro nivel y puede detener a los gammas con su nueva transformación",
+        "precio": 20000,
+        "imagen": "/Images/OrangePiccoloSHFiguart.jpg",
+        "stock": 6,
+        "categoria":"heroes"
+    },
+    {
+        "id": 4,
+        "name": "Final Form Freezer",
+        "description": "El villano más temible de todos, en su forma definitiva",
+        "precio": 15000,
+        "imagen": "/Images/FinalFormSHFiguart.jpg",
+        "stock": 2,
+        "categoria":"villanos"
+    },
+    {
+        "id": 5,
+        "name": "Perfect Cell",
+        "description": "La forma de vida evolucionada a la perfeccion",
+        "precio": 16000,
+        "imagen": "/Images/PerfectcellSHFiguart.jpg",
+        "stock": 0,
+        "categoria":"villanos"
+    },
+    {
+        "id": 6,
+        "name": "SSJ Rose Goku Black",
+        "description": "La ira de los dioses con el poder de Goku!",
+        "precio": 25000,
+        "imagen": "/Images/SSJRoseSHFiguart.jpg",
+        "stock": 6,
+        "categoria":"villanos"
+    }
+]

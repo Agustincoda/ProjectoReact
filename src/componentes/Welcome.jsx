@@ -1,4 +1,4 @@
-function Bienvenida({texto, imagen}) {
+function Bienvenida({texto}) {
 
     return (
         <div className="content">
