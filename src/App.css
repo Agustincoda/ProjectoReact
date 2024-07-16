@@ -1,8 +1,14 @@
 /* Asegura que el html y el body cubran toda la página */
-html, body {
+html {
     margin: 0;
     padding: 0;
-    height: 100%;
+    width: 100%;
+    background-color: #F0F3BD;
+}
+
+body {
+    margin: 0;
+    padding: 0;
     width: 100%;
     background-color: #F0F3BD;
 }
@@ -11,7 +17,7 @@ html, body {
 #root {
     display: flex;
     flex-direction: column;
-    height: auto;
+    height: 100%;
     width: 100%;
 }
 

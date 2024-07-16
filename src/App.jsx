@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
     return (
-        <div id="root">
+        <div >
             <BrowserRouter>
                 <NavBar />
                 <div className="app-container">

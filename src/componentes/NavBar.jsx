@@ -34,7 +34,7 @@ function NavBar() {
                         <div className="d-flex align-items-center" style={infoTienda}>
                             <p className="mb-0 info-tienda-item nombre-tienda">Dragon Store</p>
                             <Link to={'/'}>
-                                <img src='/Images/logoTienda.jpg' width={50} height={50} className="info-tienda-item" alt="Logo Tienda"/>
+                                <img src='/Images/logo.png' width={50} height={50} className="info-tienda-item" alt="Logo Tienda"/>
                             </Link>
                             <Link to={'/carrito'} className="nav-link info-tienda-item"><Carrito /></Link>
                         </div>
