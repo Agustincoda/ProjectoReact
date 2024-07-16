@@ -19,15 +19,15 @@ function NavBar() {
                 <nav style={fondoNaranja} id="linksToPages" className="navbar navbar-expand-lg navbar-light">
                     <div className="container-fluid">
                         <div className="navbar-nav">
-                            <Link to='/' className="nav-link">Home</Link>
-                            <Link to='/productos' className="nav-link">Productos</Link>
+                            <Link to={'/'} className="nav-link">Home</Link>
+                            <Link to={'/productos'} className="nav-link">Productos</Link>
                             <div className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Categorías
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="categoriasDropdown">
-                                    <li><Link to='/productos/categoria/heroes' className="dropdown-item">Guerreros definitivos</Link></li>
-                                    <li><Link to='/productos/categoria/villanos' className="dropdown-item">Villanos temibles</Link></li>
+                                    <li><Link to={'/productos/categoria/heroes'} className="dropdown-item">Guerreros definitivos</Link></li>
+                                    <li><Link to={'/productos/categoria/villanos'} className="dropdown-item">Villanos temibles</Link></li>
                                 </ul>
                             </div>
                         </div>
@@ -36,7 +36,7 @@ function NavBar() {
                             <Link to={'/'}>
                                 <img src='/Images/logoTienda.jpg' width={50} height={50} className="info-tienda-item" alt="Logo Tienda"/>
                             </Link>
-                            <Link to='/carrito' className="nav-link info-tienda-item"><Carrito /></Link>
+                            <Link to={'/carrito'} className="nav-link info-tienda-item"><Carrito /></Link>
                         </div>
                     </div>
                 </nav>

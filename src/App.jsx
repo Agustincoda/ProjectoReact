@@ -16,10 +16,10 @@ function App() {
                         <Route exact path='/productos/categoria/:categoria' element={<MostrarProductos />} />
                         <Route exact path='/productos/:id' element={<MostrarProductos />} />
                     </Routes>
-                </div>
                 <footer>
                     <h1>En desarrollo</h1>
                 </footer>
+                </div>
             </BrowserRouter>
         </div>
     );

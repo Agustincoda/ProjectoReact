@@ -11,7 +11,7 @@ html, body {
 #root {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    height: auto;
     width: 100%;
 }
 
@@ -21,16 +21,13 @@ html, body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #F0F3BD;
-    padding-top: 60px; /* Añadido para evitar superposición con el navbar fijo */
 }
 
 /* Asegura que el contenido de la navegación ocupe toda la anchura */
 nav {
     width: 100%;
-    position: fixed; /* Fija la barra de navegación en la parte superior */
     top: 0;
     left: 0;
-    z-index: 1000; /* Asegura que esté por encima del resto del contenido */
 }
 
 /* Añade un margen superior al contenido principal para evitar la superposición */
@@ -73,6 +70,7 @@ footer {
     text-align: center;
     background-color: #FF934F;
     padding: 10px;
+    
 }
 
 /* Estilos personalizados de las tarjetas */
