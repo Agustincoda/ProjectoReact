@@ -1,4 +1,3 @@
-/* Asegura que el html y el body cubran toda la página */
 html {
     margin: 0;
     padding: 0;
@@ -13,7 +12,6 @@ body {
     background-color: #F0F3BD;
 }
 
-/* Asegura que el #root ocupe todo el espacio disponible */
 #root {
     display: flex;
     flex-direction: column;
@@ -21,7 +19,6 @@ body {
     width: 100%;
 }
 
-/* Estilos del contenedor de la aplicación */
 .app-container {
     display: flex;
     flex-direction: column;
@@ -29,14 +26,12 @@ body {
     background-color: #F0F3BD;
 }
 
-/* Asegura que el contenido de la navegación ocupe toda la anchura */
 nav {
     width: 100%;
     top: 0;
     left: 0;
 }
 
-/* Añade un margen superior al contenido principal para evitar la superposición */
 .content {
     flex: 1;
     display: flex;
@@ -46,24 +41,20 @@ nav {
     padding: 20px;
 }
 
-/* Estilos del menú desplegable */
 .dropdown-menu {
     background-color: #FF934F;
     color: black;
 }
 
-/* Estilos de los ítems de la tienda */
 .info-tienda-item {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-/* Estilo de los títulos */
 .color-titulos {
     color: #00E8FC;
 }
 
-/* Estilo del nombre de la tienda */
 .nombre-tienda {
     font-family: 'Playwrite NG Modern', sans-serif;
     color: #A33B20;
@@ -71,20 +62,23 @@ nav {
     text-decoration: underline;
 }
 
-/* Estilos del pie de página */
 footer {
     text-align: center;
     background-color: #FF934F;
-    padding: 10px;
-    
+    padding: 20px;
+    margin-top: 15px;
+    color: #F0F3BD;
 }
 
-/* Estilos personalizados de las tarjetas */
 .custom-card {
     border: 2px solid black;
 }
 
-/* Estilo de la fuente en negrita */
 .font-weight-bold {
     font-weight: bold;
+}
+
+.error{
+    text-align: center;
+    padding: 10px;
 }

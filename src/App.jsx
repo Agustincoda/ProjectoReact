@@ -3,6 +3,8 @@ import NavBar from './componentes/NavBar';
 import Bienvenida from './componentes/Welcome';
 import MostrarProductos from './componentes/Productos';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Footer from './componentes/Footer';
+import ErrorUbicacion from './componentes/Error';
 
 function App() {
     return (
@@ -15,11 +17,10 @@ function App() {
                         <Route exact path='/productos' element={<MostrarProductos />} />
                         <Route exact path='/productos/categoria/:categoria' element={<MostrarProductos />} />
                         <Route exact path='/productos/:id' element={<MostrarProductos />} />
+                        <Route exact path='*' element={<ErrorUbicacion />} />
                     </Routes>
-                <footer>
-                    <h1>En desarrollo</h1>
-                </footer>
                 </div>
+                <Footer/>
             </BrowserRouter>
         </div>
     );
