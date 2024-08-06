@@ -1,4 +1,3 @@
-import Carrito from './CartWidget';
 import { Link } from 'react-router-dom';
 
 function NavBar() {
@@ -36,7 +35,7 @@ function NavBar() {
                             <Link to={'/'}>
                                 <img src='/Images/logo.png' width={50} height={50} className="info-tienda-item" alt="Logo Tienda"/>
                             </Link>
-                            <Link to={'/carrito'} className="nav-link info-tienda-item"><Carrito /></Link>
+                            <Link to={'/carrito'} className="nav-link info-tienda-item">0</Link>
                         </div>
                     </div>
                 </nav>
