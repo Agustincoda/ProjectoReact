@@ -1,6 +1,12 @@
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from './CartContext';
 
 function NavBar() {
+    const { cart } = useContext(CartContext);
+
+    const totalQuantity = cart.reduce((total, producto) => total + producto.cantidad, 0);
+
     const fondoNaranja = {
         backgroundColor: '#FF934F',
         color: 'black',
@@ -35,7 +41,10 @@ function NavBar() {
                             <Link to={'/'}>
                                 <img src='/Images/logo.png' width={50} height={50} className="info-tienda-item" alt="Logo Tienda"/>
                             </Link>
-                            <Link to={'/carrito'} className="nav-link info-tienda-item">0</Link>
+                            <Link to={'/carrito'} className="nav-link info-tienda-item">
+                                <img src='/Images/carrito.png' width={30} height={30} className="me-2" alt="Carrito" />
+                                {totalQuantity}
+                            </Link>
                         </div>
                     </div>
                 </nav>

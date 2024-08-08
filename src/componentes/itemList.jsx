@@ -24,14 +24,17 @@ const MostrarProductos = () => {
         <div className="container my-5">
             <div className="row">
                 {productos.map(producto => (
-                    <div className="col-md-4" key={producto.id}>
-                        <div className="card mb-4">
-                            <img src={producto.imagen} className="card-img-top" alt={producto.name} />
-                            <div className="card-body">
+                    <div className="col-md-4 d-flex align-items-stretch mb-4" key={producto.id}>
+                        <div className="card d-flex flex-column" style={{ height: '100%', width: '300px' }}>
+                            <img 
+                                src={producto.imagen} 
+                                className="card-img-top" 
+                                alt={producto.name} 
+                                style={{ height: '100%', objectFit: 'cover' }} 
+                            />
+                            <div className="card-body d-flex flex-column text-center">
                                 <h5 className="card-title">{producto.name}</h5>
-                                <p className="card-text">{producto.description}</p>
-                                <p className="card-text">Precio: ${producto.precio}</p>
-                                <Link to={`/productos/${producto.id}`} className="btn btn-primary">Ver Detalles</Link>
+                                <Link to={`/productos/${producto.id}`} className="btn btn-primary mt-auto">Ver Detalles</Link>
                             </div>
                         </div>
                     </div>

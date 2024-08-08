@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { CartContext } from "./CartContext.jsx";
+import React, { useContext } from 'react';
+import { CartContext } from './CartContext';
 
 function Carrito() {
-    const { cart, removeItem, clearCart } = useContext(CartContext);
+    const { cart, removeItem, clearCart, getTotalPrice } = useContext(CartContext);
 
     return (
         <div className="container my-5">
@@ -13,18 +13,34 @@ function Carrito() {
                 <div>
                     <ul className="list-group">
                         {cart.map(producto => (
-                            <li key={producto.id} className="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5>{producto.name}</h5>
-                                    <p>Precio: ${producto.precio}</p>
-                                    <p>Cantidad: {producto.cantidad}</p>
+                            <li key={producto.id} className="list-group-item d-flex align-items-center">
+                                <img 
+                                    src={producto.imagen} 
+                                    alt={producto.name} 
+                                    style={{ height: '100px', width: 'auto', marginRight: '15px', border: '1px solid black' }} 
+                                />
+                                <div className="d-flex flex-column flex-grow-1">
+                                    <h5 className="mb-1">{producto.name}</h5>
+                                    <p className="mb-1">Precio: ${producto.precio}</p>
+                                    <p className="mb-1">Cantidad: {producto.cantidad}</p>
                                 </div>
-                                <button onClick={() => removeItem(producto.id)} className="btn btn-danger">Eliminar</button>
+                                <button 
+                                    onClick={() => removeItem(producto.id)} 
+                                    className="btn btn-danger ms-3"
+                                >
+                                    Eliminar
+                                </button>
                             </li>
                         ))}
                     </ul>
                     <div className="mt-3">
-                        <button onClick={clearCart} className="btn btn-secondary">Vaciar Carrito</button>
+                        <button 
+                            onClick={clearCart} 
+                            className="btn btn-secondary"
+                        >
+                            Vaciar Carrito
+                        </button>
+                        <h4 className="mt-3">Total: ${getTotalPrice()}</h4>
                     </div>
                 </div>
             )}

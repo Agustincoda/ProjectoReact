@@ -1,40 +1,37 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const ItemCount = ({ stock, onAdd }) => {
-    const [contador, setContador] = useState(1);
-    const [itemStock, setItemStock] = useState(stock);
-    const [visible, setVisible] = useState(true);
+    const [cantidad, setCantidad] = useState(1);
 
-    const incrementar = () => {
-        if (contador < itemStock) {
-            setContador(contador + 1);
+    const handleAdd = () => {
+        if (cantidad <= stock) {
+            onAdd(cantidad);
         }
-    }
-
-    const decrementar = () => {
-        if (contador > 1) {
-            setContador(contador - 1);
-        }
-    }
-
-    const addToCart = () => {
-        if (contador <= itemStock) {
-            setItemStock(itemStock - contador);
-            onAdd(contador);
-            setContador(1);
-            setVisible(false);
-            //hacer sweet alert que diga que agregue "contador" productos al carrito
-        }
-    }
+    };
 
     return (
-        <>
-            <h1>{contador}</h1>
-            <button onClick={decrementar}>Quitar</button>
-            <button onClick={addToCart}>Agregar al Carrito</button>
-            <button onClick={incrementar}>Agregar</button>
-        </>
-    )
-}
+        <div className="d-flex align-items-center">
+            <button 
+                onClick={() => setCantidad(cantidad - 1 > 0 ? cantidad - 1 : 1)}
+                className="btn btn-danger"
+            >
+                Quitar
+            </button>
+            <span className="mx-3">{cantidad}</span>
+            <button 
+                onClick={() => setCantidad(cantidad + 1 <= stock ? cantidad + 1 : stock)}
+                className="btn btn-success"
+            >
+                Agregar
+            </button>
+            <button 
+                onClick={handleAdd}
+                className="btn btn-primary ms-3"
+            >
+                Añadir al carrito
+            </button>
+        </div>
+    );
+};
 
 export default ItemCount;
