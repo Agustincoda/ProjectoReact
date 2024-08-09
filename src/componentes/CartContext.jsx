@@ -29,7 +29,7 @@ const CartProvider = ({ children }) => {
     };
 
     const getTotalPrice = () => {
-        return cart.reduce((total, item) => total + item.precio * item.cantidad, 0);
+        return cart.reduce((total, item) => total + item.Precio * item.cantidad, 0); // Usa 'Precio' en lugar de 'precio'
     };
 
     return (
@@ -40,3 +40,4 @@ const CartProvider = ({ children }) => {
 };
 
 export default CartProvider;
+

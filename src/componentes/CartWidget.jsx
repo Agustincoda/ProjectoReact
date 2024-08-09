@@ -15,13 +15,13 @@ function Carrito() {
                         {cart.map(producto => (
                             <li key={producto.id} className="list-group-item d-flex align-items-center">
                                 <img 
-                                    src={producto.imagen} 
-                                    alt={producto.name} 
+                                    src={producto.Imagen} 
+                                    alt={producto.Nombre} 
                                     style={{ height: '100px', width: 'auto', marginRight: '15px', border: '1px solid black' }} 
                                 />
                                 <div className="d-flex flex-column flex-grow-1">
-                                    <h5 className="mb-1">{producto.name}</h5>
-                                    <p className="mb-1">Precio: ${producto.precio}</p>
+                                    <h5 className="mb-1">{producto.Nombre}</h5>
+                                    <p className="mb-1">Precio: ${producto.Precio}</p>
                                     <p className="mb-1">Cantidad: {producto.cantidad}</p>
                                 </div>
                                 <button 
