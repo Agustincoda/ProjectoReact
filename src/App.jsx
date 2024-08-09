@@ -3,6 +3,7 @@ import NavBar from './componentes/NavBar';
 import Bienvenida from './componentes/Welcome';
 import MostrarProductos from './componentes/itemList';
 import DetalleProducto from './componentes/itemDetail';
+import Checkout from './componentes/Checkout'; // Importa Checkout
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './componentes/Footer';
 import ErrorUbicacion from './componentes/Error';
@@ -22,6 +23,7 @@ function App() {
                             <Route exact path='/productos/categoria/:categoria' element={<MostrarProductos />} />
                             <Route exact path='/productos/:id' element={<DetalleProducto />} />
                             <Route exact path='/carrito' element={<Carrito />} />
+                            <Route exact path='/checkout' element={<Checkout />} /> {/* Agrega la ruta para Checkout */}
                             <Route exact path='*' element={<ErrorUbicacion />} />
                         </Routes>
                     </div>
