@@ -1,4 +1,7 @@
+import usePagina from './usePagina';
+
 function ErrorUbicacion(){
+    usePagina('Página no encontrada');
 
 
     return(

@@ -39,10 +39,10 @@ function NavBar() {
                         <div className="d-flex align-items-center" style={infoTienda}>
                             <p className="mb-0 info-tienda-item nombre-tienda">Dragon Store</p>
                             <Link to={'/'}>
-                                <img src='/Images/logo.png' width={50} height={50} className="info-tienda-item" alt="Logo Tienda"/>
+                                <img src='/Images/logo.png' width={50} height={50} className="info-tienda-item" alt="Dragon Store, ir al inicio"/>
                             </Link>
-                            <Link to={'/carrito'} className="nav-link info-tienda-item">
-                                <img src='/Images/carrito.png' width={30} height={30} className="me-2" alt="Carrito" />
+                            <Link to={'/carrito'} className="nav-link info-tienda-item" aria-label={`Carrito: ${totalQuantity} productos`}>
+                                <img src='/Images/carrito.png' width={30} height={30} className="me-2" alt="" />
                                 {totalQuantity}
                             </Link>
                         </div>

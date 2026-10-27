@@ -14,13 +14,15 @@ const ItemCount = ({ stock, onAdd }) => {
             <button 
                 onClick={() => setCantidad(cantidad - 1 > 0 ? cantidad - 1 : 1)}
                 className="btn btn-danger"
+                aria-label="Restar una unidad"
             >
                 Quitar
             </button>
-            <span className="mx-3">{cantidad}</span>
+            <span className="mx-3" aria-live="polite"><span className="visually-hidden">Cantidad: </span>{cantidad}</span>
             <button 
                 onClick={() => setCantidad(cantidad + 1 <= stock ? cantidad + 1 : stock)}
                 className="btn btn-success"
+                aria-label="Sumar una unidad"
             >
                 Agregar
             </button>

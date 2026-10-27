@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from './CartContext';
 import Swal from 'sweetalert2';
+import usePagina from './usePagina';
 import { getFirestore, doc, getDoc, writeBatch, increment, collection, addDoc } from 'firebase/firestore';
 
 const Checkout = () => {
@@ -9,6 +10,7 @@ const Checkout = () => {
     const [enviando, setEnviando] = useState(false);
     const { cart, clearCart, getTotalPrice } = useContext(CartContext);
     const navigate = useNavigate();
+    usePagina('Confirmar compra');
 
     const handleConfirm = async (e) => {
         e.preventDefault();
@@ -94,7 +96,7 @@ const Checkout = () => {
     if (cart.length === 0 && !enviando) {
         return (
             <div className="container my-5">
-                <h2>Confirmar Compra</h2>
+                <h1 className="h2">Confirmar Compra</h1>
                 <p>Tu carrito está vacío.</p>
                 <Link to="/productos" className="btn btn-primary">Ver productos</Link>
             </div>
@@ -103,7 +105,7 @@ const Checkout = () => {
 
     return (
         <div className="container my-5">
-            <h2>Confirmar Compra</h2>
+            <h1 className="h2">Confirmar Compra</h1>
             <form onSubmit={handleConfirm}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Nombre</label>

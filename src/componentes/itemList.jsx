@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
+import usePagina from './usePagina';
+
+const NOMBRES_CATEGORIAS = {
+    heroes: 'Guerreros definitivos',
+    villanos: 'Villanos temibles',
+};
 
 const MostrarProductos = () => {
     const [productos, setProductos] = useState([]);
     const { categoria } = useParams();
+    const titulo = categoria ? (NOMBRES_CATEGORIAS[categoria] ?? 'Productos') : 'Productos';
+    usePagina(titulo);
 
     useEffect(() => {
         const fetchProductos = async () => {
@@ -23,11 +31,17 @@ const MostrarProductos = () => {
     }, [categoria]);
 
     if (!productos || productos.length === 0) {
-        return <div>No hay productos disponibles.</div>;
+        return (
+            <div className="container my-5">
+                <h1 className="h2 mb-4">{titulo}</h1>
+                <p>No hay productos disponibles.</p>
+            </div>
+        );
     }
 
     return (
         <div className="container my-5">
+            <h1 className="h2 mb-4">{titulo}</h1>
             <div className="row">
                 {productos.map(producto => (
                     <div className="col-md-4 d-flex align-items-stretch justify-content-center mb-4" key={producto.id}>
@@ -39,7 +53,7 @@ const MostrarProductos = () => {
                                 style={{ height: '100%', objectFit: 'cover' }} 
                             />
                             <div className="card-body d-flex flex-column text-center">
-                                <h5 className="card-title">{producto.Nombre}</h5>
+                                <h2 className="card-title h5">{producto.Nombre}</h2>
                                 <p className="card-text">${producto.Precio}</p>
                                 <Link to={`/productos/${producto.id}`} className="btn btn-primary mt-auto">Ver Detalles</Link>
                             </div>

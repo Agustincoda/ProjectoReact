@@ -4,11 +4,13 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { CartContext } from './CartContext';
 import ItemCount from './itemCount';
 import Swal from 'sweetalert2';
+import usePagina from './usePagina';
 
 const DetalleProducto = () => {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const { addItem } = useContext(CartContext);
+    usePagina(producto ? producto.Nombre : 'Cargando producto');
 
     useEffect(() => {
         const fetchProducto = async () => {
@@ -58,7 +60,7 @@ const DetalleProducto = () => {
                             </div>
                             <div className="col-md-8">
                                 <div className="card-body d-flex flex-column justify-content-center text-center">
-                                    <h2 className="card-title">{producto.Nombre}</h2>
+                                    <h1 className="card-title h2">{producto.Nombre}</h1>
                                     <p className="card-text">{producto.Descripcion}</p>
                                     <p className="card-text">Precio: ${producto.Precio}</p>
                                     <b className="card-text">Stock disponible: {producto.Stock}</b>

@@ -16,7 +16,7 @@ function App() {
             <CartProvider>
                 <BrowserRouter>
                     <NavBar />
-                    <div className="app-container">
+                    <main className="app-container">
                         <Routes>
                             <Route exact path='/' element={<Bienvenida texto="Welcome to the ultimate Dragon ball Store!" />} />
                             <Route exact path='/productos' element={<MostrarProductos />} />
@@ -26,7 +26,7 @@ function App() {
                             <Route exact path='/checkout' element={<Checkout />} /> {/* Agrega la ruta para Checkout */}
                             <Route exact path='*' element={<ErrorUbicacion />} />
                         </Routes>
-                    </div>
+                    </main>
                     <Footer />
                 </BrowserRouter>
             </CartProvider>
