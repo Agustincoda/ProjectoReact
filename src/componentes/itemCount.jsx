@@ -10,7 +10,7 @@ const ItemCount = ({ stock, onAdd }) => {
     };
 
     return (
-        <div className="d-flex align-items-center">
+        <div className="d-flex flex-wrap align-items-center justify-content-center gap-2">
             <button 
                 onClick={() => setCantidad(cantidad - 1 > 0 ? cantidad - 1 : 1)}
                 className="btn btn-danger"

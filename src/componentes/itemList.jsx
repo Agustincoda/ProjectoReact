@@ -30,8 +30,8 @@ const MostrarProductos = () => {
         <div className="container my-5">
             <div className="row">
                 {productos.map(producto => (
-                    <div className="col-md-4 d-flex align-items-stretch mb-4" key={producto.id}>
-                        <div className="card d-flex flex-column" style={{ height: '100%', width: '300px' }}>
+                    <div className="col-md-4 d-flex align-items-stretch justify-content-center mb-4" key={producto.id}>
+                        <div className="card d-flex flex-column" style={{ height: '100%', width: '100%', maxWidth: '300px' }}>
                             <img 
                                 src={producto.Imagen} 
                                 className="card-img-top" 

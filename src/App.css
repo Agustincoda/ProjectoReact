@@ -82,3 +82,21 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+/* Mobile: links del navbar en una fila y nombre de la tienda más chico */
+@media (max-width: 991.98px) {
+    #linksToPages .navbar-nav {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    #linksToPages .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .nombre-tienda {
+        font-size: 22px;
+    }
+}
