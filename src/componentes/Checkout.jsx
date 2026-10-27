@@ -8,7 +8,7 @@ import { getFirestore, doc, getDoc, writeBatch, increment, collection, addDoc } 
 const Checkout = () => {
     const [buyer, setBuyer] = useState({ name: '', phone: '', email: '' });
     const [enviando, setEnviando] = useState(false);
-    const { cart, clearCart, getTotalPrice } = useContext(CartContext);
+    const { cart, clearCart } = useContext(CartContext);
     const navigate = useNavigate();
     usePagina('Confirmar compra');
 
@@ -17,34 +17,37 @@ const Checkout = () => {
         if (enviando || cart.length === 0) return;
         setEnviando(true);
         const db = getFirestore();
-        const outOfStockItems = [];
-
-        for (const item of cart) {
-            const docRef = doc(db, 'Productos', item.id);
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                const productData = docSnap.data();
-                if (item.cantidad > productData.Stock) {
-                    outOfStockItems.push(productData.Nombre);
-                }
-            }
-        }
-
-        if (outOfStockItems.length > 0) {
-            Swal.fire({
-                title: 'Error',
-                text: `No hay suficiente stock para los siguientes productos: ${outOfStockItems.join(', ')}`,
-                icon: 'error',
-            });
-            setEnviando(false);
-            return;
-        }
 
         try {
+            // Precio y stock se leen de Firestore al comprar, no del carrito guardado en el navegador
+            const itemsActuales = [];
+            const outOfStockItems = [];
+
+            for (const item of cart) {
+                const docRef = doc(db, 'Productos', item.id);
+                const docSnap = await getDoc(docRef);
+                const productData = docSnap.exists() ? docSnap.data() : null;
+
+                if (!productData || item.cantidad > productData.Stock) {
+                    outOfStockItems.push(productData ? productData.Nombre : item.Nombre);
+                } else {
+                    itemsActuales.push({ ...item, Nombre: productData.Nombre, Precio: productData.Precio });
+                }
+            }
+
+            if (outOfStockItems.length > 0) {
+                Swal.fire({
+                    title: 'Error',
+                    text: `No hay suficiente stock para los siguientes productos: ${outOfStockItems.join(', ')}`,
+                    icon: 'error',
+                });
+                setEnviando(false);
+                return;
+            }
+
             const batch = writeBatch(db);
 
-            cart.forEach(item => {
+            itemsActuales.forEach(item => {
                 const docRef = doc(db, 'Productos', item.id);
                 batch.update(docRef, {
                     Stock: increment(-item.cantidad),
@@ -54,13 +57,13 @@ const Checkout = () => {
 
             const order = {
                 buyer,
-                items: cart.map(item => ({
+                items: itemsActuales.map(item => ({
                     id: item.id,
                     title: item.Nombre,
                     price: item.Precio,
                     quantity: item.cantidad,
                 })),
-                total: getTotalPrice(),
+                total: itemsActuales.reduce((total, item) => total + item.Precio * item.cantidad, 0),
             };
 
             await batch.commit();
