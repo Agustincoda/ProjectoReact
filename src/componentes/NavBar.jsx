@@ -41,7 +41,7 @@ function NavBar() {
                             <Link to={'/'}>
                                 <img src='/Images/logo.png' width={50} height={50} className="info-tienda-item" alt="Dragon Store, ir al inicio"/>
                             </Link>
-                            <Link to={'/carrito'} className="nav-link info-tienda-item" aria-label={`Carrito: ${totalQuantity} productos`}>
+                            <Link to={'/carrito'} className="nav-link info-tienda-item" aria-label={`Carrito: ${totalQuantity} ${totalQuantity === 1 ? 'producto' : 'productos'}`}>
                                 <img src='/Images/carrito.png' width={30} height={30} className="me-2" alt="" />
                                 {totalQuantity}
                             </Link>
