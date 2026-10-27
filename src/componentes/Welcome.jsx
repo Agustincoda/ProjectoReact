@@ -7,7 +7,7 @@ function Bienvenida({texto}) {
         </div>
 
     );
-};
+}
 
 
 export default Bienvenida
