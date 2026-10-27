@@ -4,8 +4,7 @@ Tienda online de figuras S.H. Figuarts de Dragon Ball, hecha con React como proy
 
 Demo: https://proyectoreactcoda.netlify.app/
 
-<!-- TODO: reemplazar por una captura de la app (por ejemplo docs/captura.png) -->
-![Captura de pantalla de Dragon Store](docs/captura.png)
+![Catálogo de Dragon Store](docs/captura.jpg)
 
 ## Funcionalidades
 
