@@ -27,9 +27,9 @@ function NavBar() {
                             <Link to={'/'} className="nav-link">Home</Link>
                             <Link to={'/productos'} className="nav-link">Productos</Link>
                             <div className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button type="button" className="nav-link dropdown-toggle" id="categoriasDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     Categorías
-                                </a>
+                                </button>
                                 <ul className="dropdown-menu" aria-labelledby="categoriasDropdown">
                                     <li><Link to={'/productos/categoria/heroes'} className="dropdown-item">Guerreros definitivos</Link></li>
                                     <li><Link to={'/productos/categoria/villanos'} className="dropdown-item">Villanos temibles</Link></li>
