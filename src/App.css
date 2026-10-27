@@ -52,12 +52,12 @@ nav {
 }
 
 .color-titulos {
-    color: #00E8FC;
+    color: #006B7A;
 }
 
 .nombre-tienda {
     font-family: 'Playwrite NG Modern', sans-serif;
-    color: #A33B20;
+    color: #6B2614;
     font-size: 30px;
     text-decoration: underline;
 }
@@ -98,5 +98,17 @@ footer {
 @media (max-width: 575.98px) {
     .nombre-tienda {
         font-size: 22px;
+    }
+}
+
+/* Sin animaciones para quien las desactivó en el sistema */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
