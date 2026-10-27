@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from './CartContext';
 import usePagina from './usePagina';
+import imagenSegura from './imagenSegura';
 
 function Carrito() {
     const { cart, removeItem, clearCart, getTotalPrice } = useContext(CartContext);
@@ -18,7 +19,7 @@ function Carrito() {
                         {cart.map(producto => (
                             <li key={producto.id} className="list-group-item d-flex align-items-center">
                                 <img 
-                                    src={producto.Imagen} 
+                                    src={imagenSegura(producto.Imagen)} 
                                     alt="" 
                                     style={{ height: '100px', width: 'auto', marginRight: '15px', border: '1px solid black' }} 
                                 />
