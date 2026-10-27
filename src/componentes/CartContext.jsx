@@ -8,9 +8,10 @@ const CartProvider = ({ children }) => {
     const addItem = (producto, cantidad) => {
         const itemIndex = cart.findIndex(item => item.id === producto.id);
         if (itemIndex !== -1) {
-            const newCart = [...cart];
-            newCart[itemIndex].cantidad += cantidad;
-            setCart(newCart);
+            // No muta el item existente y no deja pasar el stock disponible
+            setCart(cart.map(item => item.id === producto.id
+                ? { ...item, cantidad: Math.min(item.cantidad + cantidad, producto.Stock) }
+                : item));
         } else {
             setCart([...cart, { ...producto, cantidad }]);
         }

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { CartContext } from './CartContext';
 import ItemCount from './itemCount';
+import Swal from 'sweetalert2';
 
 const DetalleProducto = () => {
     const { id } = useParams();
@@ -27,6 +28,14 @@ const DetalleProducto = () => {
 
     const handleAddToCart = (cantidad) => {
         addItem(producto, cantidad);
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: `${producto.Nombre} agregado al carrito`,
+            showConfirmButton: false,
+            timer: 2000,
+        });
     };
 
     if (!producto) {
