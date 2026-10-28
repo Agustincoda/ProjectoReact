@@ -99,7 +99,7 @@ const Checkout = () => {
     if (cart.length === 0 && !enviando) {
         return (
             <div className="container my-5">
-                <h1 className="h2">Confirmar Compra</h1>
+                <h1 className="display-5 mb-4">Confirmar Compra</h1>
                 <p>Tu carrito está vacío.</p>
                 <Link to="/productos" className="btn btn-primary">Ver productos</Link>
             </div>
@@ -108,7 +108,7 @@ const Checkout = () => {
 
     return (
         <div className="container my-5">
-            <h1 className="h2">Confirmar Compra</h1>
+            <h1 className="display-5 mb-4">Confirmar Compra</h1>
             <form onSubmit={handleConfirm}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Nombre</label>

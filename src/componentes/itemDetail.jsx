@@ -6,6 +6,7 @@ import ItemCount from './itemCount';
 import Swal from 'sweetalert2';
 import usePagina from './usePagina';
 import imagenSegura from './imagenSegura';
+import formatoPrecio from './formatoPrecio';
 
 const DetalleProducto = () => {
     const { id } = useParams();
@@ -53,7 +54,7 @@ const DetalleProducto = () => {
     if (!producto) {
         return (
             <div className="container my-5" aria-busy={estado === 'cargando'}>
-                <h1 className="h2">{titulos[estado]}</h1>
+                <h1 className="display-5 mb-4">{titulos[estado]}</h1>
                 {estado === 'no-existe' && <p>El producto que buscás no existe o ya no está disponible.</p>}
                 {estado === 'error' && <p>No pudimos cargar el producto. Revisá tu conexión e intentá de nuevo.</p>}
                 {estado !== 'cargando' && <Link to="/productos" className="btn btn-primary">Ver productos</Link>}
@@ -65,23 +66,21 @@ const DetalleProducto = () => {
         <div className="container my-5">
             <div className="row justify-content-center">
                 <div className="col-md-10">
-                    <div className="card">
-                        <div className="row no-gutters">
-                            <div className="col-md-4 d-flex align-items-center justify-content-center">
-                                <img 
-                                    src={imagenSegura(producto.Imagen)} 
-                                    className="img-fluid" 
-                                    alt={producto.Nombre} 
-                                    style={{ maxHeight: '300px', objectFit: 'cover' }} 
+                    <div className="card tarjeta-producto detalle-producto">
+                        <div className="row g-0">
+                            <div className="col-md-5 tarjeta-producto__imagen">
+                                <img
+                                    src={imagenSegura(producto.Imagen)}
+                                    alt={producto.Nombre}
                                 />
                             </div>
-                            <div className="col-md-8">
-                                <div className="card-body d-flex flex-column justify-content-center text-center">
-                                    <h1 className="card-title h2">{producto.Nombre}</h1>
-                                    <p className="card-text">{producto.Descripcion}</p>
-                                    <p className="card-text">Precio: ${producto.Precio}</p>
-                                    <b className="card-text">Stock disponible: {producto.Stock}</b>
-                                    <div className="d-flex flex-column align-items-center">
+                            <div className="col-md-7">
+                                <div className="card-body h-100 d-flex flex-column justify-content-center text-center p-4 p-lg-5">
+                                    <h1 className="card-title display-5">{producto.Nombre}</h1>
+                                    <p className="card-text fs-5">{producto.Descripcion}</p>
+                                    <p className="card-text precio fs-3 mb-1">{formatoPrecio(producto.Precio)}</p>
+                                    <p className="card-text texto-suave">Stock disponible: {producto.Stock}</p>
+                                    <div className="d-flex flex-column align-items-center mt-2">
                                         <ItemCount stock={producto.Stock} onAdd={handleAddToCart} ></ItemCount>
                                     </div>
                                 </div>

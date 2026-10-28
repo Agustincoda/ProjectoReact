@@ -7,24 +7,17 @@ function NavBar() {
 
     const totalQuantity = cart.reduce((total, producto) => total + producto.cantidad, 0);
 
-    const fondoNaranja = {
-        backgroundColor: '#FF934F',
-        color: 'black',
-        padding: 5,
-        width: '100%'
-    };
-
     const infoTienda = {
         padding: 10
     };
 
     return (
         <>
-            <header>
-                <nav style={fondoNaranja} id="linksToPages" className="navbar navbar-expand-lg navbar-light">
+            <header className="sticky-top">
+                <nav id="linksToPages" className="navbar navbar-expand-lg navbar-light navbar-tienda">
                     <div className="container-fluid">
                         <div className="navbar-nav">
-                            <Link to={'/'} className="nav-link">Home</Link>
+                            <Link to={'/'} className="nav-link">Inicio</Link>
                             <Link to={'/productos'} className="nav-link">Productos</Link>
                             <div className="nav-item dropdown">
                                 <button type="button" className="nav-link dropdown-toggle" id="categoriasDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,9 +34,9 @@ function NavBar() {
                             <Link to={'/'}>
                                 <img src='/Images/logo.png' width={50} height={50} className="info-tienda-item" alt="Dragon Store, ir al inicio"/>
                             </Link>
-                            <Link to={'/carrito'} className="nav-link info-tienda-item" aria-label={`Carrito: ${totalQuantity} ${totalQuantity === 1 ? 'producto' : 'productos'}`}>
+                            <Link to={'/carrito'} className="nav-link info-tienda-item d-flex align-items-center" aria-label={`Carrito: ${totalQuantity} ${totalQuantity === 1 ? 'producto' : 'productos'}`}>
                                 <img src='/Images/carrito.png' width={30} height={30} className="me-2" alt="" />
-                                {totalQuantity}
+                                <span className="contador-carrito">{totalQuantity}</span>
                             </Link>
                         </div>
                     </div>

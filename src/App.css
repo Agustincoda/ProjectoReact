@@ -1,49 +1,162 @@
-html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background-color: #F0F3BD;
+/* ===== Paleta ===== */
+:root {
+    --naranja: #FF934F;
+    --indigo: #3A405A;
+    --indigo-oscuro: #2B3044;
+    --indigo-suave: #6B7088;
+    --snow: #FFFBFC;
+    --teal: #62BBC1;
+    --caoba: #BD1E1E;
+    --caoba-oscuro: #9A1818;
+    --blanco: #FFFFFF;
+
+    --fuente-titulos: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+    --radio: 14px;
+    --sombra: 0 10px 30px rgba(58, 64, 90, 0.12);
+
+    /* Bootstrap toma estos valores para el fondo, el texto y los links */
+    --bs-body-bg: var(--snow);
+    --bs-body-color: var(--indigo);
+    --bs-heading-color: var(--indigo);
+    --bs-link-color: var(--indigo);
+    --bs-link-color-rgb: 58, 64, 90;
+    --bs-link-hover-color: var(--indigo-oscuro);
+    --bs-link-hover-color-rgb: 43, 48, 68;
+    --bs-border-color: rgba(58, 64, 90, 0.18);
 }
 
+html,
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background-color: #F0F3BD;
+    background-color: var(--snow);
+    color: var(--indigo);
 }
 
-#root {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-}
-
-.app-container {
+/* Header, contenido y footer: el footer queda abajo aunque la página sea corta */
+.app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #F0F3BD;
 }
 
-nav {
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-
-.content {
+.app-container {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+}
+
+h1,
+.titulo-display {
+    font-family: var(--fuente-titulos);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.precio {
+    color: var(--caoba);
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+.texto-suave {
+    color: var(--indigo-suave);
+}
+
+/* ===== Foco visible en toda la app ===== */
+:focus-visible {
+    outline: 3px solid var(--indigo);
+    outline-offset: 2px;
+}
+
+/* El h1 recibe el foco desde usePagina solo para anunciar la página: no necesita anillo */
+h1[tabindex="-1"]:focus {
+    outline: none;
+}
+
+.btn:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--snow), 0 0 0 0.4rem var(--indigo);
+}
+
+.form-control:focus {
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 0.2rem rgba(58, 64, 90, 0.35);
+}
+
+/* ===== Botones ===== */
+.btn {
+    border-radius: 999px;
+    font-weight: 600;
+    padding-inline: 1.25rem;
+}
+
+.btn-primary {
+    --bs-btn-color: var(--snow);
+    --bs-btn-bg: var(--indigo);
+    --bs-btn-border-color: var(--indigo);
+    --bs-btn-hover-color: var(--snow);
+    --bs-btn-hover-bg: var(--indigo-oscuro);
+    --bs-btn-hover-border-color: var(--indigo-oscuro);
+    --bs-btn-active-color: var(--snow);
+    --bs-btn-active-bg: var(--indigo-oscuro);
+    --bs-btn-active-border-color: var(--indigo-oscuro);
+    --bs-btn-disabled-color: var(--snow);
+    --bs-btn-disabled-bg: var(--indigo-suave);
+    --bs-btn-disabled-border-color: var(--indigo-suave);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--indigo);
+    --bs-btn-border-color: var(--indigo);
+    --bs-btn-hover-color: var(--snow);
+    --bs-btn-hover-bg: var(--indigo);
+    --bs-btn-hover-border-color: var(--indigo);
+    --bs-btn-active-color: var(--snow);
+    --bs-btn-active-bg: var(--indigo-oscuro);
+    --bs-btn-active-border-color: var(--indigo-oscuro);
+    border-width: 2px;
+}
+
+.btn-danger {
+    --bs-btn-color: var(--snow);
+    --bs-btn-bg: var(--caoba);
+    --bs-btn-border-color: var(--caoba);
+    --bs-btn-hover-color: var(--snow);
+    --bs-btn-hover-bg: var(--caoba-oscuro);
+    --bs-btn-hover-border-color: var(--caoba-oscuro);
+    --bs-btn-active-color: var(--snow);
+    --bs-btn-active-bg: var(--caoba-oscuro);
+    --bs-btn-active-border-color: var(--caoba-oscuro);
+}
+
+/* ===== Navbar ===== */
+.navbar-tienda {
+    --bs-navbar-color: var(--indigo);
+    --bs-navbar-hover-color: var(--indigo-oscuro);
+    --bs-navbar-active-color: var(--indigo-oscuro);
+    background-color: var(--naranja);
+    box-shadow: 0 2px 12px rgba(58, 64, 90, 0.15);
+    padding: 5px;
+}
+
+.navbar-tienda .nav-link {
+    font-weight: 600;
+}
+
+.navbar-tienda .nav-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .dropdown-menu {
-    background-color: #FF934F;
-    color: black;
+    --bs-dropdown-bg: var(--naranja);
+    --bs-dropdown-link-color: var(--indigo);
+    --bs-dropdown-link-hover-color: var(--indigo);
+    --bs-dropdown-link-hover-bg: var(--teal);
+    --bs-dropdown-link-active-color: var(--snow);
+    --bs-dropdown-link-active-bg: var(--indigo);
+    --bs-dropdown-border-color: rgba(58, 64, 90, 0.25);
+    font-weight: 600;
 }
 
 .info-tienda-item {
@@ -51,36 +164,242 @@ nav {
     margin-right: 10px;
 }
 
-.color-titulos {
-    color: #006B7A;
-}
-
 .nombre-tienda {
     font-family: 'Playwrite NG Modern', sans-serif;
-    color: #6B2614;
+    color: var(--indigo);
     font-size: 30px;
-    text-decoration: underline;
 }
 
+.contador-carrito {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.6rem;
+    height: 1.6rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background-color: var(--indigo);
+    color: var(--snow);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* ===== Secciones del inicio ===== */
+.seccion {
+    padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+.seccion-teal {
+    background-color: var(--teal);
+    color: var(--indigo);
+}
+
+.etiqueta-seccion {
+    display: inline-block;
+    color: var(--caoba);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.seccion-teal .etiqueta-seccion {
+    color: var(--indigo);
+}
+
+.titulo-seccion {
+    font-family: var(--fuente-titulos);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+}
+
+.hero {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+    overflow: hidden;
+}
+
+.hero-titulo {
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    margin-bottom: 1.25rem;
+}
+
+.hero-texto {
+    font-size: 1.15rem;
+    max-width: 34rem;
+    margin-bottom: 2rem;
+}
+
+.hero-imagen {
+    position: relative;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* Círculo teal decorativo detrás de la figura */
+.hero-imagen::before {
+    content: '';
+    position: absolute;
+    inset: 8% -6% -4% 6%;
+    border-radius: 50%;
+    background-color: var(--teal);
+    z-index: 0;
+}
+
+.hero-imagen img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    border-radius: 50%;
+    background-color: var(--blanco);
+    border: 6px solid var(--snow);
+    box-shadow: var(--sombra);
+    aspect-ratio: 1;
+    object-fit: contain;
+    padding: 8%;
+}
+
+.tarjeta-bando {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    height: 100%;
+    padding: 1.5rem;
+    border-radius: var(--radio);
+    background-color: var(--snow);
+    box-shadow: var(--sombra);
+}
+
+.tarjeta-bando img {
+    width: 120px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: var(--radio);
+    background-color: var(--blanco);
+    flex-shrink: 0;
+}
+
+.tarjeta-bando h3 {
+    font-family: var(--fuente-titulos);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.75rem;
+}
+
+/* ===== Tarjetas de producto ===== */
+.tarjeta-producto {
+    border: 0;
+    border-radius: var(--radio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    background-color: var(--blanco);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tarjeta-producto:hover,
+.tarjeta-producto:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(58, 64, 90, 0.18);
+}
+
+/* Misma proporción para todas las fotos, sean verticales u horizontales */
+.tarjeta-producto__imagen {
+    position: relative;
+    background-color: var(--blanco);
+    border-bottom: 4px solid var(--teal);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+}
+
+.tarjeta-producto__imagen img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 1rem;
+}
+
+/* En el detalle la foto ocupa su columna sin forzar proporción */
+.detalle-producto:hover,
+.detalle-producto:focus-within {
+    transform: none;
+    box-shadow: var(--sombra);
+}
+
+.detalle-producto .tarjeta-producto__imagen {
+    aspect-ratio: auto;
+    min-height: 320px;
+    border-bottom: 0;
+    border-right: 4px solid var(--teal);
+}
+
+@media (max-width: 767.98px) {
+    .detalle-producto .tarjeta-producto__imagen {
+        border-right: 0;
+        border-bottom: 4px solid var(--teal);
+    }
+}
+
+/* ===== Novedades ===== */
+.novedades {
+    border-top: 4px solid var(--teal);
+}
+
+.novedades form {
+    max-width: 32rem;
+}
+
+/* ===== Revelado al hacer scroll ===== */
+.revelar {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.revelar.revelado,
+.revelar:focus-within {
+    opacity: 1;
+    transform: none;
+}
+
+/* ===== Footer ===== */
 footer {
+    background-color: var(--naranja);
+    color: var(--indigo);
+    padding: 2.5rem 0 1.5rem;
+}
+
+footer a {
+    color: var(--indigo);
+    font-weight: 600;
+}
+
+footer .nombre-tienda {
+    font-size: 26px;
+}
+
+/* ===== Otras páginas ===== */
+.error {
     text-align: center;
-    background-color: #FF934F;
-    padding: 20px;
-    margin-top: 15px;
-    color: black;
+    padding: 2rem 1rem;
 }
 
-.custom-card {
-    border: 2px solid black;
-}
-
-.font-weight-bold {
-    font-weight: bold;
-}
-
-.error{
-    text-align: center;
-    padding: 10px;
+.miniatura-carrito {
+    height: 100px;
+    width: 80px;
+    object-fit: contain;
+    margin-right: 15px;
+    border-radius: 10px;
+    background-color: var(--blanco);
+    border: 2px solid var(--teal);
 }
 
 /* Mobile: links del navbar en una fila y nombre de la tienda más chico */
@@ -93,11 +412,38 @@ footer {
     #linksToPages .navbar-nav .dropdown-menu {
         position: absolute;
     }
+
+    .hero {
+        min-height: auto;
+    }
+
+    .hero-imagen {
+        max-width: 300px;
+    }
 }
 
 @media (max-width: 575.98px) {
     .nombre-tienda {
         font-size: 22px;
+    }
+
+    .tarjeta-bando img {
+        width: 90px;
+        height: 115px;
+    }
+
+    /* Dos cards por fila en el teléfono */
+    .tarjeta-producto .card-body {
+        padding: 0.75rem;
+    }
+
+    .tarjeta-producto .card-title {
+        font-size: 1rem;
+    }
+
+    .tarjeta-producto .btn {
+        padding-inline: 0.5rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -110,5 +456,10 @@ footer {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    .revelar {
+        opacity: 1;
+        transform: none;
     }
 }

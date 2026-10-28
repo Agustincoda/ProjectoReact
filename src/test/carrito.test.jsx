@@ -33,7 +33,7 @@ describe('Carrito', () => {
 
         await userEvent.click(boton);
         expect(screen.getByText('Cantidad: 3')).toBeInTheDocument();
-        expect(screen.getByText('Total: $48000')).toBeInTheDocument();
+        expect(screen.getByText('Total:')).toHaveTextContent('Total: $48.000');
     });
 
     it('permite eliminar un producto con un botón con nombre accesible', async () => {
