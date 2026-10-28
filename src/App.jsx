@@ -12,13 +12,13 @@ import Carrito from './componentes/CartWidget';
 
 function App() {
     return (
-        <div>
+        <div className="app">
             <CartProvider>
                 <BrowserRouter>
                     <NavBar />
                     <main className="app-container">
                         <Routes>
-                            <Route exact path='/' element={<Bienvenida texto="Welcome to the ultimate Dragon ball Store!" />} />
+                            <Route exact path='/' element={<Bienvenida texto="La tienda definitiva de Dragon Ball" />} />
                             <Route exact path='/productos' element={<MostrarProductos />} />
                             <Route exact path='/productos/categoria/:categoria' element={<MostrarProductos />} />
                             <Route exact path='/productos/:id' element={<DetalleProducto />} />
