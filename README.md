@@ -8,13 +8,15 @@ Demo: https://proyectoreactcoda.netlify.app/
 
 ## Funcionalidades
 
-- **Catálogo** de productos que se lee desde Firestore, con estados de carga y error.
+- **Inicio** con hero, productos destacados, franja de categorías y registro de novedades. Las secciones aparecen con un fade a medida que bajás.
+- **Catálogo** de productos que se lee desde Firestore, con estados de carga y error. Las cards también aparecen al hacer scroll.
 - **Filtro por categoría** desde el menú: "Guerreros definitivos" (héroes) y "Villanos temibles".
 - **Detalle de producto** con descripción, precio, stock disponible y selector de cantidad. Si el producto no existe, la página lo avisa.
 - **Carrito** con contador en el navbar, aviso al agregar productos, tope por stock, eliminación de productos, vaciado y total.
 - **Checkout** con nombre, teléfono y email: valida los campos, vuelve a leer precio y stock en Firestore, descuenta el stock y guarda la orden en la colección `buyers`.
+- **Novedades**: formulario "Mantenete al día" que guarda los emails con Netlify Forms.
 - **Página 404** para rutas que no existen.
-- **Diseño responsive** con Bootstrap, adaptado a mobile.
+- **Diseño responsive** con Bootstrap, adaptado a mobile (dos productos por fila en el teléfono).
 - **Accesibilidad (WCAG 2.2 AA)**: un `<h1>` y un `<title>` por página, foco en el título al navegar, etiquetas accesibles, contraste AA, navegación completa con teclado y respeto por `prefers-reduced-motion`.
 
 ## Stack
@@ -22,7 +24,8 @@ Demo: https://proyectoreactcoda.netlify.app/
 - [React 18](https://react.dev/) + [Vite 6](https://vitejs.dev/)
 - [React Router 7](https://reactrouter.com/) para la navegación
 - [Firebase 13 / Firestore](https://firebase.google.com/) como base de datos
-- [Bootstrap 5](https://getbootstrap.com/) (por CDN, con SRI) y CSS propio para los estilos
+- [Bootstrap 5](https://getbootstrap.com/) (por CDN, con SRI) y CSS propio para los estilos, con tipografía Anton para los títulos
+- `IntersectionObserver` nativo para el revelado al hacer scroll (sin librerías de animación)
 - [SweetAlert2](https://sweetalert2.github.io/) para los avisos
 - [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/) + [jest-axe](https://github.com/nickcolley/jest-axe) para los tests
 - ESLint con `eslint-plugin-jsx-a11y` para el lint
@@ -51,10 +54,22 @@ Otros scripts:
 
 | Script | Qué hace |
 | --- | --- |
-| `npm test` | Corre los tests (checkout, carrito y validación de imágenes, con chequeo de accesibilidad) |
+| `npm test` | Corre los tests (checkout, carrito, novedades y validación de imágenes, con chequeo de accesibilidad) |
 | `npm run build` | Genera la versión de producción en `dist/` |
 | `npm run preview` | Sirve el build de producción localmente |
 | `npm run lint` | Corre ESLint, incluidas las reglas de accesibilidad |
+
+### Paleta
+
+Los colores están como variables en `src/App.css` y Bootstrap los toma de ahí.
+
+| Color | Hex | Uso |
+| --- | --- | --- |
+| Naranja | `#FF934F` | Navbar y footer |
+| Índigo | `#3A405A` | Textos, títulos y botones |
+| Snow | `#FFFBFC` | Fondo |
+| Teal | `#62BBC1` | Franjas y detalles (no se usa para texto: no llega al contraste AA sobre fondo claro) |
+| Caoba | `#BD1E1E` | Precios, etiquetas de sección y botón Eliminar |
 
 ### Datos en Firestore
 
@@ -69,6 +84,7 @@ La app espera dos colecciones:
 - `public/_headers` agrega los headers de seguridad: CSP (solo permite jsDelivr, Google Fonts y Firestore), HSTS, `frame-ancestors`, `Referrer-Policy` y `Permissions-Policy`. Si sumás otro servicio externo, hay que agregarlo a la CSP.
 - Las variables `VITE_FIREBASE_*` de `.env.example` se cargan en Netlify en *Site configuration > Environment variables*, porque el `.env` no se sube al repo.
 - `.nvmrc` fija Node 22 para el build.
+- **Netlify Forms**: hay que activar la detección de formularios una vez en *Forms > Enable form detection* y volver a deployar. Netlify detecta el formulario oculto `novedades` de `index.html`, y los emails aparecen en *Forms > novedades*. En `localhost` el formulario muestra el mensaje de error porque Netlify Forms solo funciona en el sitio deployado.
 
 ### Seguridad
 
@@ -85,4 +101,4 @@ La app espera dos colecciones:
 - **Tests end-to-end** con Playwright: compra completa solo con teclado.
 - **Fuentes propias**: servir la tipografía desde el sitio en vez de Google Fonts.
 - **Código sin usar**: `itemListContainer.jsx`, `itemDetailContainer.jsx`, `item.jsx` y `src/assets/productos.json` son de una etapa anterior con datos locales.
-- **Bundle de 860 kB**: se puede dividir con imports dinámicos por ruta.
+- **Bundle de 870 kB**: se puede dividir con imports dinámicos por ruta.
