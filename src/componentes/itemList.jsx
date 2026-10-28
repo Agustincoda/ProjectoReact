@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import usePagina from './usePagina';
-import imagenSegura from './imagenSegura';
+import Item from './item';
 
 const NOMBRES_CATEGORIAS = {
     heroes: 'Guerreros definitivos',
@@ -46,7 +46,7 @@ const MostrarProductos = () => {
         };
         return (
             <div className="container my-5" aria-busy={estado === 'cargando'}>
-                <h1 className="h2 mb-4">{titulo}</h1>
+                <h1 className="display-5 mb-4">{titulo}</h1>
                 <p>{mensajes[estado]}</p>
             </div>
         );
@@ -54,24 +54,10 @@ const MostrarProductos = () => {
 
     return (
         <div className="container my-5">
-            <h1 className="h2 mb-4">{titulo}</h1>
+            <h1 className="display-5 mb-4">{titulo}</h1>
             <div className="row">
-                {productos.map(producto => (
-                    <div className="col-md-4 d-flex align-items-stretch justify-content-center mb-4" key={producto.id}>
-                        <div className="card d-flex flex-column" style={{ height: '100%', width: '100%', maxWidth: '300px' }}>
-                            <img 
-                                src={imagenSegura(producto.Imagen)} 
-                                className="card-img-top" 
-                                alt={producto.Nombre} 
-                                style={{ height: '100%', objectFit: 'cover' }} 
-                            />
-                            <div className="card-body d-flex flex-column text-center">
-                                <h2 className="card-title h5">{producto.Nombre}</h2>
-                                <p className="card-text">${producto.Precio}</p>
-                                <Link to={`/productos/${producto.id}`} className="btn btn-primary mt-auto">Ver Detalles</Link>
-                            </div>
-                        </div>
-                    </div>
+                {productos.map((producto, indice) => (
+                    <Item key={producto.id} producto={producto} indice={indice} />
                 ))}
             </div>
         </div>
